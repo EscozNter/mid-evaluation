@@ -19,6 +19,6 @@ public interface LeagueService {
 	 * @return the League entity associated with the given id
 	 * @throws NotFoundException if no League is found with the provided id
 	 */
-	League getById(Long id);
+	League getById(long id);
 
 }

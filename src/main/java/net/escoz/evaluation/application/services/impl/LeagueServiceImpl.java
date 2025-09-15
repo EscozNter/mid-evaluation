@@ -21,7 +21,7 @@ public class LeagueServiceImpl implements LeagueService {
 	}
 
 	@Override
-	public League getById(Long id) {
+	public League getById(long id) {
 		return leagueRepository.findById(id)
 				.orElseThrow(() -> new NotFoundException("League not found with id: " + id));
 	}
