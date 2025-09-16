@@ -14,7 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Service
-@RequiredArgsConstructor(onConstructor_ = @Lazy) // @Lazy evita el ciclo de dependencias con LeagueMapper
+@RequiredArgsConstructor(onConstructor = @__(@Lazy))// @Lazy evita el ciclo de dependencias con LeagueMapper
 public class LeagueServiceImpl implements LeagueService {
 
 	private final LeagueRepository leagueRepository;

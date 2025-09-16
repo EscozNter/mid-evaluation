@@ -7,13 +7,15 @@ import net.escoz.evaluation.domain.entities.Team;
 import net.escoz.evaluation.exceptions.NotFoundException;
 import net.escoz.evaluation.exceptions.UnprocessableEntityException;
 import net.escoz.evaluation.infraestructure.repositories.TeamRepository;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Service
-@RequiredArgsConstructor
+// @Lazy evita el ciclo de dependencias, me da pereza hacerlo de otro modo :)
+@RequiredArgsConstructor(onConstructor = @__(@Lazy))
 public class TeamServiceImpl implements TeamService {
 
 	private final TeamRepository teamRepository;

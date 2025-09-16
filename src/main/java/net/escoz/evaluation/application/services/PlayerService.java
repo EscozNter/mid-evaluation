@@ -20,4 +20,20 @@ public interface PlayerService {
 	 * @throws NotFoundException if no Player is found with the provided id
 	 */
 	Player getById(long id);
+
+	/**
+	 * Creates a new Player and saves it to the repository.
+	 *
+	 * @param player the Player entity to be created and persisted
+	 * @return the persisted Player entity
+	 */
+	Player createPlayer(Player player);
+
+	/**
+	 * Deletes a Player entity by its unique identifier.
+	 *
+	 * @param id the unique identifier of the Player to be deleted
+	 * @throws NotFoundException if no Player is found with the provided id
+	 */
+	void deletePlayer(long id);
 }
