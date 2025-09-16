@@ -2,6 +2,7 @@ package net.escoz.evaluation.application.services;
 
 import net.escoz.evaluation.domain.entities.League;
 import net.escoz.evaluation.exceptions.NotFoundException;
+import net.escoz.evaluation.exceptions.UnprocessableEntityException;
 
 import java.util.List;
 
@@ -21,4 +22,22 @@ public interface LeagueService {
 	 */
 	League getById(long id);
 
+	/**
+	 * Creates a new League and saves it to the repository.
+	 *
+	 * @param league the League entity to be created and persisted
+	 * @return the persisted League entity
+	 */
+	League createLeague(League league);
+
+	/**
+	 * Deletes a League entity by its unique identifier. Ensures that the League
+	 * does not contain any associated Teams before deletion. If the League contains
+	 * Teams, an exception is thrown.
+	 *
+	 * @param id the unique identifier of the League to be deleted
+	 * @throws NotFoundException            if no League is found with the provided id
+	 * @throws UnprocessableEntityException if the League contains associated Teams
+	 */
+	void deleteLeague(long id);
 }
