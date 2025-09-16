@@ -31,6 +31,17 @@ public interface LeagueService {
 	League createLeague(League league);
 
 	/**
+	 * Updates an existing League entity with the provided details. Ensures that a League with the
+	 * same name but a different ID does not already exist before updating. Throws an exception
+	 * if such a League is found.
+	 *
+	 * @param league the League entity containing the updated details
+	 * @return the updated League entity persisted in the repository
+	 * @throws UnprocessableEntityException if a League with the same name but a different ID exists
+	 */
+	League updateLeague(League league);
+
+	/**
 	 * Deletes a League entity by its unique identifier. Ensures that the League
 	 * does not contain any associated Teams before deletion. If the League contains
 	 * Teams, an exception is thrown.

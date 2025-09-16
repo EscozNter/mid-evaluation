@@ -47,6 +47,17 @@ public class LeagueController {
 				.body(leagueMapper.toDTO(leagueService.createLeague(league)));
 	}
 
+	@PutMapping("/{id}")
+	public ResponseEntity<LeagueOutDTO> updateLeague(@PathVariable long id,
+	                                                 @Valid @RequestBody LeagueInDTO request) {
+
+		League league = leagueMapper.toModelWithId(request, id);
+
+		return ResponseEntity
+				.ok(leagueMapper.toDTO(leagueService.updateLeague(league)));
+	}
+
+
 	@DeleteMapping("/{id}")
 	public ResponseEntity<BasicResponseDTO> deleteLeague(@PathVariable long id) {
 		leagueService.deleteLeague(id);
