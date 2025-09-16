@@ -10,6 +10,7 @@ import org.mapstruct.Mapping;
 public interface PlayerMapper {
 
 	@Mapping(target = "team", source = "team.name")
+	@Mapping(target = "league", source = "team.league.name")
 	PlayerOutDTO toDTO(Player player);
 
 	@Mapping(target = "team", source = "team.name")

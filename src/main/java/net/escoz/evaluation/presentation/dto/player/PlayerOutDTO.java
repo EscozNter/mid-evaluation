@@ -9,6 +9,7 @@ public record PlayerOutDTO(
 		int age,
 		String email,
 		List<String> positions,
+		String league,
 		String team
 ) {
 }
