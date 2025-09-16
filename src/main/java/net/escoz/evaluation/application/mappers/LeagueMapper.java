@@ -28,5 +28,5 @@ public interface LeagueMapper {
 
 	@Mapping(target = "id", ignore = true)
 	@Mapping(target = "teams", ignore = true)
-	League updateLeague(League source, @MappingTarget League destination);
+	League updateLeague(League source, @MappingTarget League target);
 }

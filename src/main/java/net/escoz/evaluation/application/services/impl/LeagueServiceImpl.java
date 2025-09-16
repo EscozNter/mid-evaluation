@@ -7,13 +7,14 @@ import net.escoz.evaluation.domain.entities.League;
 import net.escoz.evaluation.exceptions.NotFoundException;
 import net.escoz.evaluation.exceptions.UnprocessableEntityException;
 import net.escoz.evaluation.infraestructure.repositories.LeagueRepository;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Service
-@RequiredArgsConstructor
+@RequiredArgsConstructor(onConstructor_ = @Lazy) // @Lazy evita el ciclo de dependencias con LeagueMapper
 public class LeagueServiceImpl implements LeagueService {
 
 	private final LeagueRepository leagueRepository;
