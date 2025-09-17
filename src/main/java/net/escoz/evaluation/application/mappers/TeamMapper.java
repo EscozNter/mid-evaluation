@@ -46,9 +46,9 @@ public interface TeamMapper {
 	Team updateTeam(Team source, @MappingTarget Team target);
 
 	@AfterMapping
-	default void mapUpdateLeague(Team sorce, @MappingTarget Team target) {
-		if (!sorce.getLeague().equals(target.getLeague()))
-			target.setLeague(sorce.getLeague());
+	default void updateLeague(Team source, @MappingTarget Team target) {
+		if (!source.getLeague().equals(target.getLeague()))
+			target.setLeague(source.getLeague());
 	}
 
 	default int mapToPlayers(Set<Player> players) {

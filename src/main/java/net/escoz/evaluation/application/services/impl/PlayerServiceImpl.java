@@ -1,6 +1,7 @@
 package net.escoz.evaluation.application.services.impl;
 
 import lombok.RequiredArgsConstructor;
+import net.escoz.evaluation.application.mappers.PlayerMapper;
 import net.escoz.evaluation.application.services.PlayerService;
 import net.escoz.evaluation.domain.entities.Player;
 import net.escoz.evaluation.exceptions.NotFoundException;
@@ -16,6 +17,7 @@ import java.util.List;
 public class PlayerServiceImpl implements PlayerService {
 
 	private final PlayerRepository playerRepository;
+	private final PlayerMapper playerMapper;
 
 	@Override
 	public List<Player> getPlayers() {
@@ -35,6 +37,17 @@ public class PlayerServiceImpl implements PlayerService {
 			throw new UnprocessableEntityException("Player email already exists: " + player.getEmail());
 
 		return playerRepository.save(player);
+	}
+
+	@Override
+	@Transactional
+	public Player updatePlayer(Player player) {
+		if (playerRepository.existsByEmailAndIdNot(player.getEmail(), player.getId()))
+			throw new UnprocessableEntityException("Player with email " + player.getEmail() + " already exists");
+
+		return playerRepository.save(
+				playerMapper.updatePlayer(player, getById(player.getId()))
+		);
 	}
 
 	@Override
